@@ -25,15 +25,15 @@ require_once '../lib/config.php';
 <body class="login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b><?php echo $site_name;  ?></b></a>
+        <a href="../"><b><?php echo $site_name;  ?></b></a>
     </div><!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">登录到用户中心</p>
 
             <form>
             <div class="form-group has-feedback">
-                <input id="email" name="Email" type="text" class="form-control" placeholder="邮箱"/>
-                <span  class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <input id="username" name="Name" type="text" class="form-control" placeholder="用户名"/>
+                <span  class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
                 <input id="passwd" name="Password" type="password" class="form-control" placeholder="密码"/>
@@ -64,6 +64,7 @@ require_once '../lib/config.php';
             </div>
         <a href="resetpwd.php">忘记密码</a><br>
         <a href="register.php" class="text-center">注册个帐号</a>
+        <a href="../index.php" class="text-center">回首页</a>
 
     </div><!-- /.login-box-body -->
 </div><!-- /.login-box -->
@@ -94,7 +95,7 @@ require_once '../lib/config.php';
                 url:"_login.php",
                 dataType:"json",
                 data:{
-                    email: $("#email").val(),
+                    username: $("#username").val(),
                     passwd: $("#passwd").val(),
                     remember_me: $("#remember_me").val()
                 },

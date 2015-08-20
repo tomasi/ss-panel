@@ -118,6 +118,11 @@ require_once '_check.php';
                     </a>
                 </li>
 
+                <li  >
+                    <a href="sys.php">
+                        <i class="fa fa-users"></i> <span>系统信息</span>
+                    </a>
+                </li>
             </ul>
         </section>
         <!-- /.sidebar -->

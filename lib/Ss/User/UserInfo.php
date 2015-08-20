@@ -29,6 +29,10 @@ class UserInfo {
         return $this->UserArray()['pass'];
     }
 
+    function GetSSPasswd(){
+        return $this->UserArray()['passwd'];
+    }
+    
     function GetEmail(){
         return $this->UserArray()['email'];
     }

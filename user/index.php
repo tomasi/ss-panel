@@ -44,8 +44,10 @@ $unix_time = $oo->get_last_unix_time();
                             <h3 class="box-title">公告&FAQ</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
-                            <p>流量不会重置，可以通过签到获取流量。</p> 
-                            <p>流量可以通过签到获取，基本每天可以用1G流量。</p> 
+                            <p>消费信息：<a href="https://docs.google.com/spreadsheets/d/1LYJd1ZWyoHCviJL0ZZP5_WIHj4XZtGBIj2FAK-SesjU/edit?usp=sharing" target="_blank">妖的linode</a>(Google Doc)</p>
+                            <p>anyconnect服务</p>
+                            <p>日本:jpn.spiritrain.tk:999 证书密码:uUwL <a href="../oc-tokyo-uUwl.p12" target="_blank">证书下载</a></p>
+                            <p>新加坡:sg.spiritrain.tk:999 证书密码: nRgm <a href="../oc-sng-nRgm.p12" target="_blank">证书下载</a></p>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
                 </div><!-- /.col (right) -->

@@ -29,7 +29,7 @@ require_once '../lib/config.php';
     </div>
 
     <div class="register-box-body">
-        <p class="login-box-msg">注册，然后变成一只猫。</p>
+        <p class="login-box-msg">注册，并不开放。</p>
 
             <div class="form-group has-feedback">
                 <input type="text" id="name" class="form-control" placeholder="昵称"/>
@@ -74,6 +74,7 @@ require_once '../lib/config.php';
             </div>
 
         <a href="login.php" class="text-center">已经注册？请登录</a>
+        <a href="../index.php" class="text-center">回首页</a>
     </div><!-- /.form-box -->
 </div><!-- /.register-box -->
 

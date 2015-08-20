@@ -27,6 +27,14 @@ class Query {
         return $datas['0']['uid'];
     }
 
+    //根据user返回UID
+    function GetUidByUser($name){
+        $datas = $this->db->select("user","*",[
+            "user_name" => $name,
+            "LIMIT" => 1
+        ]);
+        return $datas['0']['uid'];
+    }
 
 
 }
