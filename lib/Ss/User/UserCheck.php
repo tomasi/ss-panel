@@ -78,6 +78,20 @@ class UserCheck {
         }
     }
 
+    //User Login
+    function UserLogin($name,$passwd){
+        if($this->db->has("user",[
+            "AND" => [
+                 "user_name" => $name,
+                "pass" => $passwd
+            ]
+        ])){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+    
     function UsernameEmailCheck($username,$email){
         if($this->db->has("user",[
             "AND" => [

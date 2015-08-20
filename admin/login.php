@@ -32,8 +32,8 @@ require_once '../lib/config.php';
 
             <form>
             <div class="form-group has-feedback">
-                <input id="email" name="Email" type="text" class="form-control" placeholder="邮箱"/>
-                <span  class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <input id="username" name="Name" type="text" class="form-control" placeholder="用户名"/>
+                <span  class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
                 <input id="passwd" name="Password" type="password" class="form-control" placeholder="密码"/>
@@ -93,7 +93,7 @@ require_once '../lib/config.php';
                 url:"_login.php",
                 dataType:"json",
                 data:{
-                    email: $("#email").val(),
+                    username: $("#username").val(),
                     passwd: $("#passwd").val(),
                     remember_me: $("#remember_me").val()
                 },
