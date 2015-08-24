@@ -26,11 +26,12 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-            &copy; <?php echo $site_name."  ".date('Y'); ?>  Powered by <a class="orange-text text-lighten-3" href="https://github.com/orvice/ss-panel">ss-panel</a> <?php echo $version; ?>
+            &copy; <?php echo $site_name."  ".date('Y'); ?>  Powered by <a class="orange-text text-lighten-3" href="https://github.com/SpiritRain/ss-panel" target="_blank">ss-panel</a> <?php echo $version; ?>
             Processed in <?php
             $Runtime->Stop();
             echo $Runtime->SpendTime()."ms";
             ?> Theme by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256140474'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256140474%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
         </div>
     </div>
 </footer>

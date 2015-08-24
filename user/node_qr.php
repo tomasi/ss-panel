@@ -2,12 +2,19 @@
 require_once '../lib/config.php';
 require_once '_check.php';
 $id = $_GET['id'];
+$type = $_GET['type'];
 $node = new \Ss\Node\NodeInfo($id);
 $server =  $node->Server();
 $method = $node->Method();
-$pass = $oo->get_pass();
-$port = $oo->get_port();
-
+if ($type=="1"){
+    $pass = $oo->get_pass();
+    $port = $oo->get_port();
+}
+else{
+    $s = new \Ss\User\Ss(2);
+    $pass = $s->get_pass();
+    $port = $s->get_port();    
+}
 $ssurl =  $method.":".$pass."@".$server.":".$port;
 $ssqr = "ss://".base64_encode($ssurl);
 ?>

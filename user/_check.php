@@ -3,6 +3,7 @@
 if(isset($_COOKIE['uid'])|| $_COOKIE['uid'] != ''){
         //co
         $uid = $_COOKIE['uid'];
+        $user_name = $_COOKIE['user_name'];
         $user_email = $_COOKIE['user_email'];
         $user_pwd  = $_COOKIE['user_pwd'];
 

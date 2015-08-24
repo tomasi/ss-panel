@@ -1,6 +1,7 @@
 <?php
 require_once '_main.php';
 $node = new Ss\Node\Node();
+$share = new Ss\User\Ss(2);
 ?>
 
     <!-- =============================================== -->
@@ -40,8 +41,8 @@ $node = new Ss\Node\Node();
                                                 操作 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu">
-                                                <li role="presentation"><a role="menuitem" target="_blank" tabindex="-1" href="node_json.php?id=<?php echo $row['id']; ?>">配置文件</a></li>
-                                                <li role="presentation"><a role="menuitem" target="_blank" tabindex="-1" href="node_qr.php?id=<?php echo $row['id']; ?>">二维码</a></li>
+                                                <li role="presentation"><a role="menuitem" target="_blank" tabindex="-1" href="node_json.php?id=<?php echo $row['id']; ?>&type=1">配置文件</a></li>
+                                                <li role="presentation"><a role="menuitem" target="_blank" tabindex="-1" href="node_qr.php?id=<?php echo $row['id']; ?>&type=1">二维码</a></li>
                                             </ul>
                                         </li>
                                         <li class="pull-left header"><i class="fa fa-angle-right"></i> <?php echo $row['node_name']; ?></li>
@@ -66,15 +67,20 @@ $node = new Ss\Node\Node();
                 <div class="col-md-6">
                     <div class="box box-solid">
                         <div class="box-header">
-                            <i class="fa fa-code"></i>
-                            <h3 class="box-title">Pro节点</h3>
+                            <i class="fa fa-th-list"></i>
+                            <h3 class="box-title">公共账号</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
                             <div class="callout callout-warning">
                                 <h4>注意!</h4>
-                                <p>....</p>
+                                <p>公共账号每个月换一次密码，且也不要随意公开公共账号</p>
+                            </div>
+                            <div>
+                                <p>公用账号密码：<?php echo $share->get_pass();?></p>
+                                <p>公用账号端口：<?php echo $share->get_port();?></p>
                             </div><?php
-                            $node1 = $node->NodesArray(1);
+
+                            $node1 = $node->NodesArray(0);
                             foreach($node1 as $row){
                                 ?>
                                 <div class="nav-tabs-custom">
@@ -84,8 +90,8 @@ $node = new Ss\Node\Node();
                                                 操作 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu">
-                                                <li role="presentation"><a role="menuitem" target="_blank" tabindex="-1" href="node_json.php?id=<?php echo $row['id']; ?>">配置文件</a></li>
-                                                <li role="presentation"><a role="menuitem" target="_blank" tabindex="-1" href="node_qr.php?id=<?php echo $row['id']; ?>">二维码</a></li>
+                                                <li role="presentation"><a role="menuitem" target="_blank" tabindex="-1" href="node_json.php?id=<?php echo $row['id']; ?>&type=2">配置文件</a></li>
+                                                <li role="presentation"><a role="menuitem" target="_blank" tabindex="-1" href="node_qr.php?id=<?php echo $row['id']; ?>&type=2">二维码</a></li>
                                             </ul>
                                         </li>
                                         <li class="pull-left header"><i class="fa fa-angle-right"></i> <?php echo $row['node_name']; ?></li>
