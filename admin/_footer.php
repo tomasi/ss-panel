@@ -6,8 +6,8 @@
         echo $Runtime->SpendTime()."ms";
         ?>
     </div>
-    <strong>Copyright &copy; 2014-<?php echo date('Y'); ?> <a href="https://github.com/SpiritRain/ss-panel" target="_blank"><?php echo $site_name;  ?></a> </strong>
-            All rights reserved.  Powered by  <b>ss-panel</b><?php echo $version; ?>
+    <strong>Copyright &copy; 2014-<?php echo date('Y'); ?> <?php echo $site_name;  ?></strong>
+            All rights reserved.  Powered by  <a href="https://github.com/SpiritRain/ss-panel" target="_blank"><strong>ss-panel</strong></a><?php echo $version; ?>
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256140474'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256140474%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 </footer>
 </div><!-- ./wrapper -->
