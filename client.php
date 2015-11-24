@@ -1,3 +1,7 @@
+<?php
+require_once 'lib/config.php';
+include_once 'header.php';
+?>
 <div class="container">
     <div class="section"> 
         <!--   Icon Section   -->
@@ -43,7 +47,7 @@
                                 <td>5</td>
                                 <td>Windows</td>
                                 <td>shadowsocks 2.5.6</td>
-                                <td><a href="download/sshadowsocks-win-2.5.6.zip" target="_blank">本地下载</a></td>
+                                <td><a href="download/shadowsocks-win-2.5.6.zip" target="_blank">本地下载</a></td>
                             </tr>
                              <tr>
                                 <td>6</td>
