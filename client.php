@@ -23,7 +23,7 @@ include_once 'header.php';
                                 <td>1</td>
                                 <td>Android</td>
                                 <td>shadowsocks 2.7.0</td>
-                                <td><a href="download/shadowsocks-nightly-2.7.0.apk" target="_blank">本地下载</a></td>
+                                <td><a href="download/shadowsocks-nightly-2.7.0.apk" target="_blank">本地下载1</a>  <a href="http://sg.spiritrain.tk/download/shadowsocks-nightly-2.7.0.apk" target="_blank">本地下载2</a></td>
                             </tr>
                              <tr>
                                 <td>2</td>
@@ -35,7 +35,7 @@ include_once 'header.php';
                                 <td>3</td>
                                 <td>Android</td>
                                 <td>fqrouter</td>
-                                <td><a href="download/fqrouter.apk" target="_blank">本地下载</a></td>
+                                <td><a href="download/fqrouter.apk" target="_blank">本地下载1</a>  <a href="http://sg.spiritrain.tk/download/fqrouter.apk" target="_blank">本地下载2</a></td>
                             </tr>
                              <tr>
                                 <td>4</td>
@@ -47,7 +47,7 @@ include_once 'header.php';
                                 <td>5</td>
                                 <td>Windows</td>
                                 <td>shadowsocks 2.5.6</td>
-                                <td><a href="download/shadowsocks-win-2.5.6.zip" target="_blank">本地下载</a></td>
+                                <td><a href="download/shadowsocks-win-2.5.6.zip" target="_blank">本地下载1</a>  <a href="http://sg.spiritrain.tk/download/shadowsocks-win-2.5.6.zip" target="_blank">本地下载2</a></td>
                             </tr>
                              <tr>
                                 <td>6</td>
@@ -59,7 +59,7 @@ include_once 'header.php';
                                 <td>7</td>
                                 <td>Mac OS</td>
                                 <td>shadowsocks 2.6.3</td>
-                                <td><a href="download/shadowsocksX-2.6.3.dmg" target="_blank">本地下载</a></td>
+                                <td><a href="download/shadowsocksX-2.6.3.dmg" target="_blank">本地下载1</a>  <a href="http://sg.spiritrain.tk/download/shadowsocksX-2.6.3.dmg" target="_blank">本地下载2</a></td>
                             </tr>
                              <tr>
                                 <td>8</td>
