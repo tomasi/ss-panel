@@ -7,7 +7,8 @@ include_once 'header.php';
         <!--   Icon Section   -->
         <div class="row">
             <div class="row marketing">
-                <h2 class="sub-header">客户端下载</h2>
+                <h2 class="sub-header" align="center">客户端下载</h2>
+                <a href="http://pan.baidu.com/s/1qWvgRi0" target="_blank">百度网盘</a>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -23,7 +24,7 @@ include_once 'header.php';
                                 <td>1</td>
                                 <td>Android</td>
                                 <td>shadowsocks 2.7.0</td>
-                                <td><a href="download/shadowsocks-nightly-2.7.0.apk" target="_blank">本地下载1</a>  <a href="http://sg.spiritrain.tk/download/shadowsocks-nightly-2.7.0.apk" target="_blank">本地下载2</a></td>
+                                <td><a href="download/shadowsocks-nightly-2.7.0.apk" target="_blank">本地下载1</a>/<a href="http://sg.spiritrain.tk/download/shadowsocks-nightly-2.7.0.apk" target="_blank">本地下载2</a></td>
                             </tr>
                              <tr>
                                 <td>2</td>
@@ -35,7 +36,7 @@ include_once 'header.php';
                                 <td>3</td>
                                 <td>Android</td>
                                 <td>fqrouter</td>
-                                <td><a href="download/fqrouter.apk" target="_blank">本地下载1</a>  <a href="http://sg.spiritrain.tk/download/fqrouter.apk" target="_blank">本地下载2</a></td>
+                                <td><a href="download/fqrouter.apk" target="_blank">本地下载1</a>/<a href="http://sg.spiritrain.tk/download/fqrouter.apk" target="_blank">本地下载2</a></td>
                             </tr>
                              <tr>
                                 <td>4</td>
@@ -47,7 +48,7 @@ include_once 'header.php';
                                 <td>5</td>
                                 <td>Windows</td>
                                 <td>shadowsocks 2.5.6</td>
-                                <td><a href="download/shadowsocks-win-2.5.6.zip" target="_blank">本地下载1</a>  <a href="http://sg.spiritrain.tk/download/shadowsocks-win-2.5.6.zip" target="_blank">本地下载2</a></td>
+                                <td><a href="download/shadowsocks-win-2.5.6.zip" target="_blank">本地下载1</a>/<a href="http://sg.spiritrain.tk/download/shadowsocks-win-2.5.6.zip" target="_blank">本地下载2</a></td>
                             </tr>
                              <tr>
                                 <td>6</td>
@@ -59,12 +60,12 @@ include_once 'header.php';
                                 <td>7</td>
                                 <td>Mac OS</td>
                                 <td>shadowsocks 2.6.3</td>
-                                <td><a href="download/shadowsocksX-2.6.3.dmg" target="_blank">本地下载1</a>  <a href="http://sg.spiritrain.tk/download/shadowsocksX-2.6.3.dmg" target="_blank">本地下载2</a></td>
+                                <td><a href="download/shadowsocksX-2.6.3.dmg" target="_blank">本地下载1</a>/<a href="http://sg.spiritrain.tk/download/shadowsocksX-2.6.3.dmg" target="_blank">本地下载2</a></td>
                             </tr>
                              <tr>
                                 <td>8</td>
                                 <td>Mac OS</td>
-                                <td>shadowsocks 2.7.0</td>
+                                <td>shadowsocks 2.6.3</td>
                                 <td><a href="https://github.com/shadowsocks/shadowsocks-iOS/releases/download/2.6.3/ShadowsocksX-2.6.3.dmg" target="_blank">远程下载</a></td>
                             </tr>
                             <tr>
