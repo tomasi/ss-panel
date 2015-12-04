@@ -20,7 +20,7 @@ if(!$code->IsCodeOk()){
     $a['msg'] = "两次密码输入不符";
 }elseif(strlen($passwd)<8){
     $a['msg'] = "密码太短";
-}elseif(strlen($name)<7){
+}elseif(strlen($name)<3){
     $a['msg'] = "用户名太短";
 }elseif($c->IsUsernameUsed($name)){
     $a['msg'] = "用户名已经被使用";
