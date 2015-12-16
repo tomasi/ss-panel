@@ -103,6 +103,18 @@ $unix_time = $oo->get_last_unix_time();
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
                 </div><!-- /.col (right) -->
+
+                <div class="col-md-6">
+                    <div class="box box-solid">
+                        <div class="box-header">
+                            <h3 class="box-title">AnyConnect</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <p> 密码：<?php echo $oo->get_ac_pass();?> </p>
+                            <p> 过期日期：<code><?php echo date('Y-m-d H:i:s',$$oo->get_ac_expire());  ?></code> </p>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col (right) -->
             </div><!-- /.row -->
             <!-- END PROGRESS BARS -->
         </section><!-- /.content -->

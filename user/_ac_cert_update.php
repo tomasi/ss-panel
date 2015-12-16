@@ -4,7 +4,7 @@ require_once '_check.php';
 
 // $pwd = $_POST['sspwd'];
 if($_POST['acpwd'] == ''){
-    $pwd = \Ss\Etc\Comm::get_random_char(8);
+    $pwd = \Ss\Etc\Comm::get_random_char(4);
 }else{
     $pwd = $_POST['acpwd'];
     $pwd = htmlspecialchars($pwd, ENT_QUOTES, 'UTF-8');

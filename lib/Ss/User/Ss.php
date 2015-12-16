@@ -120,14 +120,37 @@ class Ss {
         ]);
     }
 
+    //返回AC密码
+    function  get_ac_pass(){
+        $datas = $this->db->select("ac_cert","*",[
+            "uid" => $this->uid,
+            "LIMIT" => "1"
+        ]);
+        return $datas['passwd'];
+    }
+
+    //返回AC时间
+    function  get_ac_expire(){
+        $datas = $this->db->select("ac_cert","*",[
+            "uid" => $this->uid,
+            "LIMIT" => "1"
+        ]);
+        return $datas['expire_time'];
+    }
+
     //update ac cert
-    function update_ac_cert($pass, $time){
+    function update_ac_cert($pass,$time){
+        $expire = time() + etime * 3600 * 24;
         $this->db->update("ac_cert",[
             "passwd" => $pass,
-            "expire_time" => $time,
+            "expire_time" => $expire,
         ],[
             "user_id" => $this->uid
         ]);
+        $u_name = $this->get_user_info_array()['user_name'];
+        $res = "";
+        exec("/var/www/ocvpn/userca.sh gc $u_name $pass $time", $res);
+        print_r($res);
     }
 
     //user info array
