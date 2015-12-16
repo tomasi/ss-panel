@@ -120,6 +120,16 @@ class Ss {
         ]);
     }
 
+    //update ac cert
+    function update_ac_cert($pass, $time){
+        $this->db->update("ac_cert",[
+            "passwd" => $pass,
+            "expire_time" => $time,
+        ],[
+            "user_id" => $this->uid
+        ]);
+    }
+
     //user info array
     function getUserArray(){
         $datas = $this->db->select("user","*",[

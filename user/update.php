@@ -88,6 +88,32 @@ require_once '_main.php'; ?>
                     </div><!-- /.box -->
                 </div><!-- /.col (right) -->
 
+                <div class="col-md-6">
+                    <div class="box box-solid">
+                        <div class="box-header">
+                            <i class="fa fa-align-left"></i>
+                            <h3 class="box-title">AnyConnect连接密码修改</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+
+                                <div id="ac-msg-success" class="alert alert-info alert-dismissable" style="display:none" >
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                    <h4><i class="icon fa fa-info"></i> 修改成功!</h4>
+                                    <p id="ac-msg-success-p"></p>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" id="acpwd" placeholder="输入新密码" class="form-control"  >
+                                </div>
+
+                                <div class="box-footer">
+                                    <button type="submit" id="ac-cert-update" class="btn btn-primary"  >修改 </button>
+                                </div>
+
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col (right) -->
+
             </div>
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
@@ -147,6 +173,33 @@ require_once '_footer.php'; ?>
                     }else{
                         $("#ss-msg-error").show();
                         $("#ss-msg-error-p").html(data.msg);
+                    }
+                },
+                error:function(jqXHR){
+                    alert("发生错误："+jqXHR.status);
+                }
+            })
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(){
+        $("#ac-cert-update").click(function(){
+            $.ajax({
+                type:"POST",
+                url:"_ac_cert_update.php",
+                dataType:"json",
+                data:{
+                    sspwd: $("#acpwd").val()
+                },
+                success:function(data){
+                    if(data.ok){
+                        $("#ac-msg-success").show();
+                        $("#ac-msg-success-p").html(data.msg);
+                    }else{
+                        $("#ac-msg-error").show();
+                        $("#ac-msg-error-p").html(data.msg);
                     }
                 },
                 error:function(jqXHR){
