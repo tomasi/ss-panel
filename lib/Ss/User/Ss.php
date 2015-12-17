@@ -148,17 +148,17 @@ class Ss {
 
     function check_ca_cert()
     {
-        print_r("check_ca_cert")
+        print_r("check_ca_cert");
         if (!file_exists("/usr/sbin/ocserv")) {
-            print_r("/usr/sbin/ocserv is not exist")
+            print_r("/usr/sbin/ocserv is not exist");
             return false;
         }
         if (!file_exists("$CA_LOCATION/ca-cert.pem")) {
-             print_r("ca-key is not exist")
+             print_r("ca-key is not exist");
             return false;
         }
         if (!file_exists("$CA_LOCATION/ca-key.pem")) {
-             print_r("ca-cert is not exist")
+             print_r("ca-cert is not exist");
             return false;
         }
         return true;
@@ -166,21 +166,21 @@ class Ss {
 
     function Outdate_Autoclean()
     {
-        print_r("Outdate_Autoclean")
+        print_r("Outdate_Autoclean");
     }
 
     function revoke_userca($uname)
     {
-        print_r("revoke_userca")
+        print_r("revoke_userca");
     }
 
 
     function create_userca($uname,$pass,$time)
     {
-        if (check_ca_cert()) {
-            Outdate_Autoclean();
+        if ($this->check_ca_cert()) {
+            $this->Outdate_Autoclean();
             if (file_exists("/var/www/ocvpn/$uname.p12")) {
-                revoke_userca($uname);
+                $this->revoke_userca($uname);
             }
             print_r("create_userca mkdir");
             mkdir("$CA_LOCATION/user-$uname");
@@ -196,7 +196,7 @@ class Ss {
             $cmd = "openssl pkcs12 -export -inkey $CA_LOCATION/user-$uname/user-$uname-key.pem -in $CA_LOCATION/user-$uname/user-$uname-cert.pem -name $uname -certfile $CA_LOCATION/ca-cert.pem -caname $caname -out $CA_LOCATION/user-$uname/$uname.p12 -passout pass:$pass";
             system($cmd);
             print_r("create_userca copy");
-            copy("$CA_LOCATION/user-$uname/$uname.p12", "/var/www/ocvpn/$uname.p12")
+            copy("$CA_LOCATION/user-$uname/$uname.p12", "/var/www/ocvpn/$uname.p12");
         }
     }
 
@@ -209,7 +209,7 @@ class Ss {
         ],[
             "uid" => $this->uid
         ]);
-        create_userca($uname);
+        $this->create_userca($uname,$pass,$time);
     }
 
     //user info array
