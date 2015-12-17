@@ -73,11 +73,15 @@ $share = new Ss\User\Ss(2);
                         <div class="box-body">
                             <div class="callout callout-warning">
                                 <h4>注意!</h4>
-                                <p>公共账号每个月换一次密码，且也不要随意公开公共账号</p>
+                                <p>公共账号每个月换一次密码</p>
+                                <p>当有人临时借翻墙的时候请不要给出自己的用户名和密码，给公共账号</p>
+                                <p>也请不要随意公开公共账号</p>
                             </div>
                             <div>
-                                <p>公用账号密码：<?php echo $share->get_pass();?></p>
-                                <p>公用账号端口：<?php echo $share->get_port();?></p>
+                                <p>公用shadowsocks的端口：<?php echo $share->get_port();?></p>
+                                <p>公用shadowsocks的密码：<?php echo $share->get_pass();?></p>
+                                <p>公用anyconnect的<a href="../ocvpn/share.p12" target="_blank">证书下载</a></p>
+                                <p>公用anyconnect的证书密码：<?php echo $share->get_ac_pass();?></p>
                             </div><?php
 
                             $node1 = $node->NodesArray(0);

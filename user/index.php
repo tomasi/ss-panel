@@ -45,9 +45,6 @@ $unix_time = $oo->get_last_unix_time();
                         </div><!-- /.box-header -->
                         <div class="box-body">
                             <p>消费信息：<a href="https://docs.google.com/spreadsheets/d/1LYJd1ZWyoHCviJL0ZZP5_WIHj4XZtGBIj2FAK-SesjU/edit?usp=sharing" target="_blank">妖的linode</a>(Google Doc)</p>
-                            <p>anyconnect服务</p>
-                            <p>日本:jpn.spiritrain.tk:999 证书密码:uUwL <a href="../oc-tokyo-uUwl.p12" target="_blank">证书下载</a></p>
-                            <p>新加坡:sg.spiritrain.tk:999 证书密码: nRgm <a href="../oc-sng-nRgm.p12" target="_blank">证书下载</a></p>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
                 </div><!-- /.col (right) -->
@@ -69,26 +66,6 @@ $unix_time = $oo->get_last_unix_time();
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
                 </div><!-- /.col (left) -->
-
-
-
-                <div class="col-md-6">
-                    <div class="box box-solid">
-                        <div class="box-header">
-                            <h3 class="box-title">签到获取流量</h3>
-                        </div><!-- /.box-header -->
-                        <div class="box-body">
-                            <p> 22小时内可以签到一次。</p>
-                            <?php  if($oo->is_able_to_check_in())  { ?>
-                                <p id="checkin-btn"> <button id="checkin" class="btn btn-success  btn-flat">签到</button></p>
-                            <?php  }else{ ?>
-                                <p><a class="btn btn-success btn-flat disabled" href="#">不能签到</a> </p>
-                            <?php  } ?>
-                            <p id="checkin-msg" ></p>
-                            <p>上次签到时间：<code><?php echo date('Y-m-d H:i:s',$oo->get_last_check_in_time());?></code></p>
-                        </div><!-- /.box-body -->
-                    </div><!-- /.box -->
-                </div><!-- /.col (right) -->
 
                 <div class="col-md-6">
                     <div class="box box-solid">
@@ -116,6 +93,25 @@ $unix_time = $oo->get_last_unix_time();
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
                 </div><!-- /.col (right) -->
+
+                <div class="col-md-6">
+                    <div class="box box-solid">
+                        <div class="box-header">
+                            <h3 class="box-title">签到获取流量</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <p> 22小时内可以签到一次。</p>
+                            <?php  if($oo->is_able_to_check_in())  { ?>
+                                <p id="checkin-btn"> <button id="checkin" class="btn btn-success  btn-flat">签到</button></p>
+                            <?php  }else{ ?>
+                                <p><a class="btn btn-success btn-flat disabled" href="#">不能签到</a> </p>
+                            <?php  } ?>
+                            <p id="checkin-msg" ></p>
+                            <p>上次签到时间：<code><?php echo date('Y-m-d H:i:s',$oo->get_last_check_in_time());?></code></p>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col (right) -->
+
             </div><!-- /.row -->
             <!-- END PROGRESS BARS -->
         </section><!-- /.content -->

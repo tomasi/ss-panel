@@ -226,7 +226,7 @@ class Ss {
             "passwd" => $pass,
             "expire_time" => $expire,
         ],[
-            "uid" => $this->uid
+            "user_name" => $uname
         ]);
         $this->create_userca($uname,$pass,$time);
     }
