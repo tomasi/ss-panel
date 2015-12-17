@@ -191,7 +191,7 @@ require_once '_footer.php'; ?>
                 url:"_ac_cert_update.php",
                 dataType:"json",
                 data:{
-                    sspwd: $("#acpwd").val()
+                    acpwd: $("#acpwd").val()
                 },
                 success:function(data){
                     if(data.ok){

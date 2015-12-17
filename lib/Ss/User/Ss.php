@@ -9,11 +9,13 @@ class Ss {
     //
     public  $uid;
     public $db;
+    public $CA_LOCATION;
 
     function  __construct($uid=0){
         global $db;
         $this->uid = $uid;
         $this->db  = $db;
+        $CA_LOCATION = "/usr/local/share/ca-certificates";
     }
 
     //user info array
@@ -23,6 +25,11 @@ class Ss {
             "LIMIT" => "1"
         ]);
         return $datas['0'];
+    }
+
+    //返回用户名
+    function  get_user_name(){
+         return $this->get_user_info_array()['user_name'];
     }
 
     //返回端口号
@@ -126,7 +133,7 @@ class Ss {
             "uid" => $this->uid,
             "LIMIT" => "1"
         ]);
-        return $datas['passwd'];
+        return $datas['0']['passwd'];
     }
 
     //返回AC时间
@@ -135,22 +142,74 @@ class Ss {
             "uid" => $this->uid,
             "LIMIT" => "1"
         ]);
-        return $datas['expire_time'];
+        return $datas['0']['expire_time'];
+    }
+
+
+    function check_ca_cert()
+    {
+        print_r("check_ca_cert")
+        if (!file_exists("/usr/sbin/ocserv")) {
+            print_r("/usr/sbin/ocserv is not exist")
+            return false;
+        }
+        if (!file_exists("$CA_LOCATION/ca-cert.pem")) {
+             print_r("ca-key is not exist")
+            return false;
+        }
+        if (!file_exists("$CA_LOCATION/ca-key.pem")) {
+             print_r("ca-cert is not exist")
+            return false;
+        }
+        return true;
+    }
+
+    function Outdate_Autoclean()
+    {
+        print_r("Outdate_Autoclean")
+    }
+
+    function revoke_userca($uname)
+    {
+        print_r("revoke_userca")
+    }
+
+
+    function create_userca($uname,$pass,$time)
+    {
+        if (check_ca_cert()) {
+            Outdate_Autoclean();
+            if (file_exists("/var/www/ocvpn/$uname.p12")) {
+                revoke_userca($uname);
+            }
+            print_r("create_userca mkdir");
+            mkdir("$CA_LOCATION/user-$uname");
+            $caname="ocvpn";
+            $tmpl= fopen("$CA_LOCATION/user-$uname/user.tmpl", "w") or die("Unable to open file!");
+            $content = "cn =$uname\nunit = Route\nuid =$uname\nexpiration_days =$time\nsigning_key\ntls_www_client";
+            fwrite($tmpl, $content);
+            fclose($tmpl);
+            $cmd = "openssl genrsa -out $CA_LOCATION/user-$uname/user-$uname-key.pem 2048";
+            system($cmd);
+            $cmd = "certtool --generate-certificate --hash SHA256 --load-privkey $CA_LOCATION/user-$uname/user-$uname-key.pem --load-ca-certificate $CA_LOCATION/ca-cert.pem --load-ca-privkey $CA_LOCATION/ca-key.pem --template $CA_LOCATION/user-$uname/user.tmpl --outfile $CA_LOCATION/user-$uname/user-$uname-cert.pem";
+            system($cmd);
+            $cmd = "openssl pkcs12 -export -inkey $CA_LOCATION/user-$uname/user-$uname-key.pem -in $CA_LOCATION/user-$uname/user-$uname-cert.pem -name $uname -certfile $CA_LOCATION/ca-cert.pem -caname $caname -out $CA_LOCATION/user-$uname/$uname.p12 -passout pass:$pass";
+            system($cmd);
+            print_r("create_userca copy");
+            copy("$CA_LOCATION/user-$uname/$uname.p12", "/var/www/ocvpn/$uname.p12")
+        }
     }
 
     //update ac cert
-    function update_ac_cert($pass,$time){
-        $expire = time() + etime * 3600 * 24;
+    function update_ac_cert($uname,$pass,$time){
+        $expire = time() + $time * 3600 * 24;
         $this->db->update("ac_cert",[
             "passwd" => $pass,
             "expire_time" => $expire,
         ],[
-            "user_id" => $this->uid
+            "uid" => $this->uid
         ]);
-        $u_name = $this->get_user_info_array()['user_name'];
-        $res = "";
-        exec("/var/www/ocvpn/userca.sh gc $u_name $pass $time", $res);
-        print_r($res);
+        create_userca($uname);
     }
 
     //user info array
