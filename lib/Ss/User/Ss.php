@@ -149,44 +149,62 @@ class Ss {
     function check_ca_cert()
     {
         $location = $this->CA_LOCATION;
-        print_r("check_ca_cert");
+        error_log("check_ca_cert");
         if (!file_exists("/usr/sbin/ocserv")) {
-            print_r("/usr/sbin/ocserv is not exist");
+            error_log("/usr/sbin/ocserv is not exist");
             return false;
         }
         if (!file_exists("$location/ca-cert.pem")) {
-             print_r("ca-key is not exist");
+             error_log("ca-key is not exist");
             return false;
         }
         if (!file_exists("$location/ca-key.pem")) {
-             print_r("ca-cert is not exist");
+             error_log("ca-cert is not exist");
             return false;
         }
         return true;
     }
 
-    function Outdate_Autoclean()
-    {
-        print_r("Outdate_Autoclean");
-    }
-
     function revoke_userca($uname)
     {
-        print_r("revoke_userca");
+        error_log("revoke_userca");
+        $location = $this->CA_LOCATION;
+        if ($this->check_ca_cert()) {
+            $cmd = "cat $location/user-$uname/user-$uname-cert.pem >>$location/revoked.pem";
+            system($cmd);
+            $cmd = "certtool --generate-crl --load-ca-privkey $location/ca-cert.pem --load-ca-certificate $location/ca-cert.pem --load-certificate $location/revoked.pem --template $location/crl.tmpl --outfile $location/crl.pem";
+            system($cmd);
+            if (file_exists("/var/www/ocvpn/$uname.p12")) {
+                unlink("/var/www/ocvpn/$uname.p12");
+            }
+            if (file_exists("$location/user-$uname/$uname.p12")) {
+                unlink("$location/user-$uname/$uname.p12");
+            }
+            if (file_exists("$location/user-$uname/user.tmpl")) {
+                unlink("$location/user-$uname/user.tmpl");
+            }
+            if (file_exists("$location/user-$uname/user-$uname-cert.pem")) {
+                unlink("$location/user-$uname/user-$uname-cert.pem");
+            }
+            if (file_exists("$location/user-$uname/user-$uname-key.pem")) {
+                unlink("$location/user-$uname/user-$uname-key.pem");
+            }
+        }
     }
 
 
     function create_userca($uname,$pass,$time)
     {
+        error_log("create_userca");
         $location = $this->CA_LOCATION;
         if ($this->check_ca_cert()) {
-            $this->Outdate_Autoclean();
             if (file_exists("/var/www/ocvpn/$uname.p12")) {
                 $this->revoke_userca($uname);
             }
-            print_r("create_userca mkdir");
-            mkdir("$location/user-$uname");
-            $caname="ocvpn";
+            if (!file_exists("$location/user-$uname")) {
+                mkdir("$location/user-$uname");
+            }
+            $caname="RYGH";
             $tmpl= fopen("$location/user-$uname/user.tmpl", "w") or die("Unable to open file!");
             $content = "cn =$uname\nunit = Route\nuid =$uname\nexpiration_days =$time\nsigning_key\ntls_www_client";
             fwrite($tmpl, $content);
@@ -197,7 +215,6 @@ class Ss {
             system($cmd);
             $cmd = "openssl pkcs12 -export -inkey $location/user-$uname/user-$uname-key.pem -in $location/user-$uname/user-$uname-cert.pem -name $uname -certfile $location/ca-cert.pem -caname $caname -out $location/user-$uname/$uname.p12 -passout pass:$pass";
             system($cmd);
-            print_r("create_userca copy");
             copy("$location/user-$uname/$uname.p12", "/var/www/ocvpn/$uname.p12");
         }
     }
