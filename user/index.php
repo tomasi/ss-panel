@@ -110,6 +110,7 @@ $unix_time = $oo->get_last_unix_time();
                             <h3 class="box-title">AnyConnect</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
+                            <p> 证书：<a href="../ocvpn/<?php echo $oo->get_user_name();?>.p12" target="_blank">下载</a></p>
                             <p> 密码：<?php echo $oo->get_ac_pass();?> </p>
                             <p> 过期日期：<code><?php echo date('Y-m-d H:i:s',$oo->get_ac_expire());  ?></code> </p>
                         </div><!-- /.box-body -->

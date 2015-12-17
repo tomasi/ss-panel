@@ -172,7 +172,7 @@ class Ss {
         if ($this->check_ca_cert()) {
             $cmd = "cat $location/user-$uname/user-$uname-cert.pem >>$location/revoked.pem";
             system($cmd);
-            $cmd = "certtool --generate-crl --load-ca-privkey $location/ca-cert.pem --load-ca-certificate $location/ca-cert.pem --load-certificate $location/revoked.pem --template $location/crl.tmpl --outfile $location/crl.pem";
+            $cmd = "certtool --generate-crl --load-ca-privkey $location/ca-key.pem --load-ca-certificate $location/ca-cert.pem --load-certificate $location/revoked.pem --template $location/crl.tmpl --outfile $location/crl.pem";
             system($cmd);
             if (file_exists("/var/www/ocvpn/$uname.p12")) {
                 unlink("/var/www/ocvpn/$uname.p12");
