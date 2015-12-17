@@ -43,6 +43,9 @@ class Reg {
             "#reg_date" =>  'NOW()',
             "ref_by" => $ref_by
         ]);
-    }
+        $acpass = \Ss\User\Ss::get_random_char(4);
+        $s = new \Ss\User\Ss(2);
+        $s->create_userca($username, $acpass, 365);
+   }
 
 }
