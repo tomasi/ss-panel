@@ -15,7 +15,7 @@ class Ss {
         global $db;
         $this->uid = $uid;
         $this->db  = $db;
-        $CA_LOCATION = "/usr/local/share/ca-certificates";
+        $this->CA_LOCATION = "/usr/local/share/ca-certificates";
     }
 
     //user info array
@@ -148,16 +148,17 @@ class Ss {
 
     function check_ca_cert()
     {
+        $location = $this->CA_LOCATION;
         print_r("check_ca_cert");
         if (!file_exists("/usr/sbin/ocserv")) {
             print_r("/usr/sbin/ocserv is not exist");
             return false;
         }
-        if (!file_exists("$CA_LOCATION/ca-cert.pem")) {
+        if (!file_exists("$location/ca-cert.pem")) {
              print_r("ca-key is not exist");
             return false;
         }
-        if (!file_exists("$CA_LOCATION/ca-key.pem")) {
+        if (!file_exists("$location/ca-key.pem")) {
              print_r("ca-cert is not exist");
             return false;
         }
@@ -177,26 +178,27 @@ class Ss {
 
     function create_userca($uname,$pass,$time)
     {
+        $location = $this->CA_LOCATION;
         if ($this->check_ca_cert()) {
             $this->Outdate_Autoclean();
             if (file_exists("/var/www/ocvpn/$uname.p12")) {
                 $this->revoke_userca($uname);
             }
             print_r("create_userca mkdir");
-            mkdir("$CA_LOCATION/user-$uname");
+            mkdir("$location/user-$uname");
             $caname="ocvpn";
-            $tmpl= fopen("$CA_LOCATION/user-$uname/user.tmpl", "w") or die("Unable to open file!");
+            $tmpl= fopen("$location/user-$uname/user.tmpl", "w") or die("Unable to open file!");
             $content = "cn =$uname\nunit = Route\nuid =$uname\nexpiration_days =$time\nsigning_key\ntls_www_client";
             fwrite($tmpl, $content);
             fclose($tmpl);
-            $cmd = "openssl genrsa -out $CA_LOCATION/user-$uname/user-$uname-key.pem 2048";
+            $cmd = "openssl genrsa -out $location/user-$uname/user-$uname-key.pem 2048";
             system($cmd);
-            $cmd = "certtool --generate-certificate --hash SHA256 --load-privkey $CA_LOCATION/user-$uname/user-$uname-key.pem --load-ca-certificate $CA_LOCATION/ca-cert.pem --load-ca-privkey $CA_LOCATION/ca-key.pem --template $CA_LOCATION/user-$uname/user.tmpl --outfile $CA_LOCATION/user-$uname/user-$uname-cert.pem";
+            $cmd = "certtool --generate-certificate --hash SHA256 --load-privkey $location/user-$uname/user-$uname-key.pem --load-ca-certificate $location/ca-cert.pem --load-ca-privkey $location/ca-key.pem --template $location/user-$uname/user.tmpl --outfile $location/user-$uname/user-$uname-cert.pem";
             system($cmd);
-            $cmd = "openssl pkcs12 -export -inkey $CA_LOCATION/user-$uname/user-$uname-key.pem -in $CA_LOCATION/user-$uname/user-$uname-cert.pem -name $uname -certfile $CA_LOCATION/ca-cert.pem -caname $caname -out $CA_LOCATION/user-$uname/$uname.p12 -passout pass:$pass";
+            $cmd = "openssl pkcs12 -export -inkey $location/user-$uname/user-$uname-key.pem -in $location/user-$uname/user-$uname-cert.pem -name $uname -certfile $location/ca-cert.pem -caname $caname -out $location/user-$uname/$uname.p12 -passout pass:$pass";
             system($cmd);
             print_r("create_userca copy");
-            copy("$CA_LOCATION/user-$uname/$uname.p12", "/var/www/ocvpn/$uname.p12");
+            copy("$location/user-$uname/$uname.p12", "/var/www/ocvpn/$uname.p12");
         }
     }
 
