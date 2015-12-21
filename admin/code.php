@@ -1,19 +1,8 @@
 <?php
 require_once 'lib/config.php';
-include_once 'header.php';
+$invite = new \Ss\User\Invite($uid);
 $c = new \Ss\User\Invite();
 ?>
-
-<div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-        <br><br>
-        <div class="row center">
-            <h5>邀请码并不刷新</h5>
-            <h5>注册请找此站主人</h5>
-        </div>
-    </div>
-</div>
-
 
 <div class="container">
     <div class="section"> 
