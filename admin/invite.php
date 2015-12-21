@@ -54,7 +54,7 @@ $code = $invite->CodeArray();
                             </div>
 
                             <div class="box-footer">
-                                <p>邀请码类别0的<a href="../code.php">在这里查看</a> </p>
+                                <p>邀请码类别0的<a href="admin/code.php">在这里查看</a> </p>
                             </div>
                         </form>
                     </div>
