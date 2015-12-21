@@ -26,7 +26,7 @@ $c = new \Ss\User\Invite();
                             ?>
                             <tr>
                                 <td><?php echo $data['id'];?></td>
-                                <td><?php echo $data['code'];?></td>
+                                <td><a href="/user/register.php?code=<?php echo $data['code'];?>"><?php echo $data['code'];?></a></td>
                                 <td>可用</td>
                             </tr>
                         <?php } ?>
